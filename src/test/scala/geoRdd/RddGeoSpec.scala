@@ -100,6 +100,7 @@ class RddGeoSpec extends GeoSpec {
     coordinates(4) = coordinates(0) // The last coordinate is the same as the first coordinate in order to compose a closed ring
     val polygonQueryWindow = gf.createPolygon(coordinates)
 
+    polygonQueryWindow.getCentroid()
     val resultSize = RangeQuery.SpatialRangeQuery(objectRDD, polygonQueryWindow, false,false).count
     assert(resultSize == 4)
 

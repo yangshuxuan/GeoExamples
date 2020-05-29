@@ -55,6 +55,7 @@ class RDDKNNGeoSpec extends GeoSpec {
     ).map{
       case(x,y) => gf.createPoint(new Coordinate(x, y))
     }
+    gf.createPoint(new Coordinate(1.0, 2.0)).getCentroid()
 
     val rawPointsRDD = sc.parallelize(rawPoints,1).persist(StorageLevel.MEMORY_ONLY)
     val objectRDD = new PointRDD(rawPointsRDD,StorageLevel.MEMORY_ONLY)
